@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
         DOCKER_IMAGE = 'diya0311/bluevaultloanfe'
-        KUBERNETES_DEPLOYMENT = 'loanfrontend'
+        KUBERNETES_DEPLOYMENT = 'loan-form-fe'
     }
 
     stages {
