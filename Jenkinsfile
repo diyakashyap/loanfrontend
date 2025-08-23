@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/diyakashyap/loanfrontend.git'
+                git branch: 'master', url: 'https://github.com/diyakashyap/loanfrontend.git'
             }
         }
 
