@@ -8,8 +8,8 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Copy website files
 COPY index.html /usr/share/nginx/html/index.html
-COPY style.css /usr/share/nginx/html/style.css
-COPY script.js /usr/share/nginx/html/script.js
+#COPY style.css /usr/share/nginx/html/style.css
+#COPY script.js /usr/share/nginx/html/script.js
 
 # Expose port 80
 EXPOSE 80
