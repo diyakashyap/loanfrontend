@@ -46,6 +46,8 @@ pipeline {
                     helm upgrade --install $HELM_RELEASE $HELM_CHART \
                         --set image.repository=$DOCKER_IMAGE \
                         --set image.tag=$TAG \
+                        --set serviceAccount.create=true \
+                        --set serviceAccount.name=loan-frontend \
                         --wait --timeout 5m
                     """ 
                     // Update the Kubernetes deployment with the new image/
