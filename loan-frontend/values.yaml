@@ -121,3 +121,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# Environment variables for frontend
+env:
+  - name: API_URL
+    value: "http://loan-backend.default.svc.cluster.local:5000"
+
