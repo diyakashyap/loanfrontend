@@ -45,7 +45,7 @@ pipeline {
                     sh """
                     helm upgrade --install $HELM_RELEASE $HELM_CHART \
                         --set image.repository=$DOCKER_IMAGE \
-                        --set image.tag=$TAG
+                        --set image.tag=$TAG \
                         --wait --timeout 5m
                     """ 
                     // Update the Kubernetes deployment with the new image
