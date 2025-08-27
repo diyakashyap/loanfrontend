@@ -23,7 +23,6 @@ fullnameOverride: ""
 serviceAccount:
   create: true
   automount: true
-  # Annotations to add to the service account
   annotations: {}
   name: "loan-frontend"
 
@@ -82,11 +81,19 @@ resources:
 livenessProbe:
   httpGet:
     path: /
-    port: http
+    port: 80
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 2
+  failureThreshold: 3
 readinessProbe:
   httpGet:
     path: /
-    port: http
+    port: 80
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 2
+  failureThreshold: 3
 
 #This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
 autoscaling:
