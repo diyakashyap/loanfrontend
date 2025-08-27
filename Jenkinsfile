@@ -48,7 +48,7 @@ pipeline {
                         --set image.tag=$TAG \
                         --wait --timeout 5m
                     """ 
-                    // Update the Kubernetes deployment with the new image
+                    // Update the Kubernetes deployment with the new image/
                     //sh "kubectl set image deployment/$KUBERNETES_DEPLOYMENT frontend=$DOCKER_IMAGE:$TAG"
                 }
             }
