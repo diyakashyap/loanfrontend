@@ -43,12 +43,10 @@ pipeline {
             steps {
                 script {
                     sh """
-                    helm upgrade --install $HELM_RELEASE $HELM_CHART \
-                        --set image.repository=$DOCKER_IMAGE \
-                        --set image.tag=$TAG \
-                        --set serviceAccount.create=true \
-                        --set serviceAccount.name=loan-frontend \
-                        --wait --timeout 5m
+                    helm upgrade --install loan-frontend ./loan-frontend \
+                    --set image.repository=diya0311/bluevaultloanfe \
+                    --set image.tag=30 \
+                    --wait --timeout 5m
                     """ 
                     // Update the Kubernetes deployment with the new image/
                     //sh "kubectl set image deployment/$KUBERNETES_DEPLOYMENT frontend=$DOCKER_IMAGE:$TAG"
