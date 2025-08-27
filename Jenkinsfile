@@ -5,6 +5,8 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
         DOCKER_IMAGE = 'diya0311/bluevaultloanfe'
         KUBERNETES_DEPLOYMENT = 'loan-form-fe'
+        HELM_RELEASE = 'loan-frontend'
+        HELM_CHART = './helm/loan-frontend'     
     }
 
     stages {
@@ -40,8 +42,13 @@ pipeline {
         stage('Rolling Update Kubernetes Deployment') {
             steps {
                 script {
+                    sh """
+                    helm upgrade --install $HELM_RELEASE $HELM_CHART \
+                        --set image.repository=$DOCKER_IMAGE \
+                        --set image.tag=$TAG
+                    """l 
                     // Update the Kubernetes deployment with the new image
-                    sh "kubectl set image deployment/$KUBERNETES_DEPLOYMENT frontend=$DOCKER_IMAGE:$TAG"
+                    //sh "kubectl set image deployment/$KUBERNETES_DEPLOYMENT frontend=$DOCKER_IMAGE:$TAG"
                 }
             }
         }
