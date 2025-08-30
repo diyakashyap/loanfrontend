@@ -46,9 +46,9 @@ pipeline {
                     helm upgrade --install $HELM_RELEASE $HELM_CHART \
                     --set image.repository=$DOCKER_IMAGE \
                     --set image.tag=${TAG} \
-                    --set controller.service.type=NodePort \
-                    --wait --timeout 1m
+                    --set controller.service.type=NodePort
                     """ 
+                    // --wait --timeout 1m
                     // Update the Kubernetes deployment with the new image/
                     //sh "kubectl set image deployment/$KUBERNETES_DEPLOYMENT frontend=$DOCKER_IMAGE:$TAG"
                 }
