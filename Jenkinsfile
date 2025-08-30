@@ -45,8 +45,8 @@ pipeline {
                     sh """
                     helm upgrade --install loan-frontend ./loan-frontend \
                     --set image.repository=diya0311/bluevaultloanfe \
-                    --set image.tag=30 \
-                    --wait --timeout 5m
+                    --set image.tag=${IMAGE_TAG} \
+                    --wait --timeout 1m
                     """ 
                     // Update the Kubernetes deployment with the new image/
                     //sh "kubectl set image deployment/$KUBERNETES_DEPLOYMENT frontend=$DOCKER_IMAGE:$TAG"
