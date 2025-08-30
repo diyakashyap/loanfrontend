@@ -60,3 +60,12 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{- define "loan-frontend.serviceAccountName" -}}
+{{- if .Values.serviceAccount.name }}
+{{ .Values.serviceAccount.name }}
+{{- else }}
+{{ include "loan-frontend.fullname" . }}
+{{- end }}
+{{- end }}
+
