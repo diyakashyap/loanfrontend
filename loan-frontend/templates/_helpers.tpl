@@ -55,17 +55,8 @@ Create the name of the service account to use
 */}}
 {{- define "loan-frontend.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "loan-frontend.fullname" .) .Values.serviceAccount.name }}
+  {{- default (include "loan-frontend.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
-{{- default "default" .Values.serviceAccount.name }}
+  {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
-
-{{- define "loan-frontend.serviceAccountName" -}}
-{{- if .Values.serviceAccount.name }}
-{{ .Values.serviceAccount.name }}
-{{- else }}
-{{ include "loan-frontend.fullname" . }}
-{{- end }}
-{{- end }}
-
